@@ -102,6 +102,7 @@ def academic_info():
             }}
         )
 
+
         return 'Academic information submitted successfully!'
 
     return render_template('academic_info.html')
