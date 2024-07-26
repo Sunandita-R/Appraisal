@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Academic Information</title>
+    <script>
+        function addSection(containerId, html) {
+            var container = document.getElementById(containerId);
+            var div = document.createElement('div');
+            div.innerHTML = html;
+            container.appendChild(div);
+        }
+    </script>
+</head>
+<body>
+    <h2>Academic Information</h2>
+    <form method="post" action="/academic_info" enctype="multipart/form-data">
+        <div id="subjects-container">
+            <div>
+                <label for="academic_year">Academic Year:</label>
+                <input type="text" id="academic_year" name="academic_year" placeholder="20xx-20xx" required><br><br>
+                
+                <label for="semester">Semester:</label>
+                <select id="semester" name="semester" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                </select><br><br>
+
+                <label for="section">Section:</label>
+                <select id="section" name="section" required>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                </select><br><br>
+
+                <label for="subject_code">Subject Code:</label>
+                <input type="text" id="subject_code" name="subject_code" required><br><br>
+                <label for="subject_name">Subject Name:</label>
+                <input type="text" id="subject_name" name="subject_name" required><br><br>
+                <label for="pass_percent">Pass %:</label>
+                <input type="number" id="pass_percent" name="pass_percent" required><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('subjects-container', `
+                <label for='academic_year'>Academic Year:</label>
+                <input type='text' name='academic_year' placeholder='20xx-20xx' required><br><br>
+                <label for='semester'>Semester:</label>
+                <select name='semester' required>
+                    <option value='1'>1</option>
+                    <option value='2'>2</option>
+                    <option value='3'>3</option>
+                    <option value='4'>4</option>
+                    <option value='5'>5</option>
+                    <option value='6'>6</option>
+                    <option value='7'>7</option>
+                    <option value='8'>8</option>
+                </select><br><br>
+                <label for='section'>Section:</label>
+                <select name='section' required>
+                    <option value='A'>A</option>
+                    <option value='B'>B</option>
+                    <option value='C'>C</option>
+                </select><br><br>
+                <label for='subject_code'>Subject Code:</label>
+                <input type='text' name='subject_code' required><br><br>
+                <label for='subject_name'>Subject Name:</label>
+                <input type='text' name='subject_name' required><br><br>
+                <label for='pass_percent'>Pass %:</label>
+                <input type='number' name='pass_percent' required><br><br>
+        `)">Add Another Subject</button><br><br>
+        
+        <label for="certificate">Upload Certificate:</label>
+        <input type="file" id="certificate" name="certificate"><br><br>
+
+        <div id="teaching-methods-container">
+            <div>
+                <label for="innovative_methods">Innovative Teaching Methods:</label>
+                <input type="text" id="innovative_methods" name="innovative_methods"><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('teaching-methods-container', `
+                <label for='innovative_methods'>Innovative Teaching Methods:</label>
+                <input type='text' name='innovative_methods'><br><br>
+        `)">Add Another Method</button><br><br>
+        
+        <div id="feedback-container">
+            <div>
+                <label for="feedback_subject_code">Subject Code:</label>
+                <input type="text" id="feedback_subject_code" name="feedback_subject_code"><br><br>
+                <label for="feedback_percent">Feedback Percentage:</label>
+                <input type="number" id="feedback_percent" name="feedback_percent"><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('feedback-container', `
+                <label for='feedback_subject_code'>Subject Code:</label>
+                <input type='text' name='feedback_subject_code'><br><br>
+                <label for='feedback_percent'>Feedback Percentage:</label>
+                <input type='number' name='feedback_percent'><br><br>
+        `)">Add Another Feedback</button><br><br>
+        
+        <div id="helping-students-container">
+            <div>
+                <label for="helping_students">Efforts for Helping Underperforming Students:</label>
+                <input type="text" id="helping_students" name="helping_students"><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('helping-students-container', `
+                <label for='helping_students'>Efforts for Helping Underperforming Students:</label>
+                <input type='text' name='helping_students'><br><br>
+        `)">Add Another Effort</button><br><br>
+        
+        <div id="cat-duties-container">
+            <div>
+                <label for="cat_duties">CAT Exam Duties Performed:</label>
+                <input type="text" id="cat_duties" name="cat_duties"><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('cat-duties-container', `
+                <label for='cat_duties'>CAT Exam Duties Performed:</label>
+                <input type='text' name='cat_duties'><br><br>
+        `)">Add Another Duty</button><br><br>
+        
+        <div id="learning-materials-container">
+            <div>
+                <label for="learning_materials">Preparation and Upgradation of Learning Materials:</label>
+                <input type="text" id="learning_materials" name="learning_materials"><br><br>
+            </div>
+        </div>
+        
+        <button type="button" onclick="addSection('learning-materials-container', `
+                <label for='learning_materials'>Preparation and Upgradation of Learning Materials:</label>
+                <input type='text' name='learning_materials'><br><br>
+        `)">Add Another Learning Material</button><br><br>
+        
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
