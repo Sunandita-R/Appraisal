@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Main Page</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Personal Information</h5>
+                        <p class="card-text">View and edit your personal information.</p>
+                        <a href="{{ url_for('personal_info') }}" class="btn btn-primary">Go to Personal Information</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Teaching Performance</h5>
+                        <p class="card-text">View and edit your teaching performance records.</p>
+                        <a href="{{ url_for('teaching_performance') }}" class="btn btn-primary">Go to Teaching Performance</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Research Related Work</h5>
+                        <p class="card-text">View and edit your research-related work.</p>
+                        <a href="{{ url_for('research_work') }}" class="btn btn-primary">Go to Research Related Work</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Extra and Co-curricular Activities</h5>
+                        <p class="card-text">View and edit your extra and co-curricular activities.</p>
+                        <a href="{{ url_for('extra_activities') }}" class="btn btn-primary">Go to Extra and Co-curricular Activities</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

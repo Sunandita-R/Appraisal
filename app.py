@@ -24,7 +24,21 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 @app.route('/')
 def home():
     return redirect(url_for('login'))
+@app.route('/personal_info')
+def personal_info():
+    return render_template('personal_info.html')
 
+@app.route('/teaching_performance')
+def teaching_performance():
+    return render_template('academic_info.html')
+
+@app.route('/research_work')
+def research_work():
+    return render_template('research_work.html')
+
+@app.route('/extra_activities')
+def extra_activities():
+    return render_template('extra_activities.html')
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
@@ -33,7 +47,7 @@ def login():
         user = users.find_one({'email': email, 'password': password})
         if user:
             session['user_id'] = str(user['_id'])
-            return redirect(url_for('academic_info'))
+            return render_template('dashboard.html')
         else:
             return 'Invalid email or password.'
     return render_template('login.html')
@@ -57,7 +71,7 @@ def signup():
         }).inserted_id
         
         session['user_id'] = str(user_id)
-        return redirect(url_for('academic_info'))
+        return render_template('dashboard.html')
     return render_template('signup.html')
 
 @app.route('/academic_info', methods=['GET', 'POST'])
@@ -107,5 +121,51 @@ def academic_info():
 
     return render_template('academic_info.html')
 
+@app.route('/personal_information', methods=['GET', 'POST'])
+def personal_information():
+    if 'user_id' not in session:
+        return redirect(url_for('login'))
+
+    if request.method == 'POST':
+        # Gather data from the form
+        name = request.form['name']
+        dob = request.form['dob']
+        designation = request.form['designation']
+        department = request.form['department']
+        date_of_joining_college = request.form['date_of_joining_college']
+        date_of_appointment_current = request.form['date_of_appointment_current']
+        date_of_joining_department = request.form['date_of_joining_department']
+        highest_qualification = request.form['highest_qualification']
+        year_qualified = request.form['year_qualified']
+        special_qualification = request.form['special_qualification']
+        nature_of_appointment = request.form['nature_of_appointment']
+        employee_id = request.form['employee_id']
+        honors = request.form.getlist('honors')
+
+        # Update the user's record in MongoDB
+        users.update_one(
+            {'_id': ObjectId(session['user_id'])},
+            {'$set': {
+                'personal_info': {
+                    'name': name,
+                    'dob': dob,
+                    'designation': designation,
+                    'department': department,
+                    'date_of_joining_college': date_of_joining_college,
+                    'date_of_appointment_current': date_of_appointment_current,
+                    'date_of_joining_department': date_of_joining_department,
+                    'highest_qualification': highest_qualification,
+                    'year_qualified': year_qualified,
+                    'special_qualification': special_qualification,
+                    'nature_of_appointment': nature_of_appointment,
+                    'employee_id': employee_id,
+                    'honors': honors
+                }
+            }}
+        )
+
+        return 'Personal Information Updated Successfully!'
+
+    return render_template('personal_info.html')
 if __name__ == '__main__':
     app.run(debug=True)

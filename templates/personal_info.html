@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script>
+        function addHonorField() {
+            var container = document.getElementById("honors-container");
+            var input = document.createElement("input");
+            input.type = "text";
+            input.name = "honors";
+            input.className = "form-control mt-2";
+            input.placeholder = "Enter Honor";
+            container.appendChild(input);
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1>Personal Information</h1>
+        <form method="POST" action="/personal_information">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="dob">Date of Birth</label>
+                <input type="date" class="form-control" id="dob" name="dob" required>
+            </div>
+            <div class="form-group">
+                <label for="designation">Designation</label>
+                <select class="form-control" id="designation" name="designation" required>
+                    <option value="Assistant Professor">Assistant Professor</option>
+                    <option value="Associate Professor">Associate Professor</option>
+                    <option value="Professor">Professor</option>
+                    <option value="Non-Teaching Staff">Non-Teaching Staff</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control" id="department" name="department" required>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Electronics and Communication">Electronics and Communication</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <option value="Chemical">Chemical</option>
+                    <option value="Information Technology">Information Technology</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="date_of_joining_college">Date of Joining College</label>
+                <input type="date" class="form-control" id="date_of_joining_college" name="date_of_joining_college" required>
+            </div>
+            <div class="form-group">
+                <label for="date_of_appointment_current">Date of Appointment in Current Designation</label>
+                <input type="date" class="form-control" id="date_of_appointment_current" name="date_of_appointment_current" required>
+            </div>
+            <div class="form-group">
+                <label for="date_of_joining_department">Date of Joining Current Department</label>
+                <input type="date" class="form-control" id="date_of_joining_department" name="date_of_joining_department" required>
+            </div>
+            <div class="form-group">
+                <label for="highest_qualification">Highest Academic Qualification</label>
+                <input type="text" class="form-control" id="highest_qualification" name="highest_qualification" required>
+            </div>
+            <div class="form-group">
+                <label for="year_qualified">Year Qualified</label>
+                <input type="text" class="form-control" id="year_qualified" name="year_qualified" required>
+            </div>
+            <div class="form-group">
+                <label for="special_qualification">Special Qualification</label>
+                <input type="text" class="form-control" id="special_qualification" name="special_qualification">
+            </div>
+            <div class="form-group">
+                <label for="nature_of_appointment">Nature of Appointment</label>
+                <select class="form-control" id="nature_of_appointment" name="nature_of_appointment" required>
+                    <option value="Probation">Probation</option>
+                    <option value="Permanent">Permanent</option>
+                    <option value="Visiting">Visiting</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="employee_id">Employee ID</label>
+                <input type="text" class="form-control" id="employee_id" name="employee_id" required>
+            </div>
+            <div class="form-group">
+                <label for="honors">Honors Conferred</label>
+                <div id="honors-container">
+                    <input type="text" class="form-control" name="honors" placeholder="Enter Honor">
+                </div>
+                <button type="button" class="btn btn-secondary mt-2" onclick="addHonorField()">Add More Honors</button>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+</body>
+</html>
